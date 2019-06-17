@@ -12,9 +12,6 @@ public class Carta {
         this.posicion = posicion;
     }
 
-    public Carta() {
-    }
-
     public int getGanancia() {
         return palo.getValor() + beneficio + posicion;
     }
@@ -24,18 +21,14 @@ public class Carta {
     }
 
     public String infoCarta() {
-        return infoCartaExpress() + " (Beneficio: " + this.beneficio + ") su Ganancia es: " + getGanancia();
+        return infoCartaExpress() + ") cuya Ganancia es: " + getGanancia();
     }
 
     public String infoCartaExpress() {
-        return this.posicion + " de " + this.palo.getNombre();
+        return this.posicion + " de " + this.palo.getNombre() + " (Beneficio: " + this.beneficio;
     }
 
     public void print(String string) {
         System.out.println(string);
-    }
-
-    public String toString() {
-        return "{ " + infoCartaExpress() + ", " + getGanancia() + " }";
     }
 }

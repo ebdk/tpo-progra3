@@ -11,14 +11,9 @@ public class Main {
     }
 
     private static void ejecutar() throws IOException {
-        Parseador parseador = new Parseador();
-        Combinador combinador = new Combinador();
-        Sistema sistema = new Sistema(parseador, combinador);
+        Sistema sistema = new Sistema(new Parseador(), new Combinador());
 
         sistema.ejecutar();
-
-        System.out.println(sistema.getMejorValor());
-        System.out.println(sistema.getMejorCombinacion());
     }
 
 }

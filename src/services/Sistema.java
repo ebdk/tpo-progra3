@@ -48,9 +48,10 @@ public class Sistema {
 
     public void ejecutar() throws IOException {
         parseador.procesarArchivo();
-        // printCartas();
+        printCartas();
+        System.out.println("----------------------------------");
         combinador.conseguirResultado();
-        // mostrarMejorCombinacion();
+        mostrarMejorCombinacion();
     }
 
     public List<Carta> getTodasLasCartas() {
@@ -91,15 +92,14 @@ public class Sistema {
         Palo.printPalos();
         System.out.println("Valor de K es: " + this.getCombinatoriaMaxima());
         for (Carta carta : todasLasCartas) {
-            carta.print(carta.infoCarta());
+            carta.print(carta.infoCartaExpress());
         }
     }
 
     public void mostrarMejorCombinacion() {
-        IntSummaryStatistics gananciaOBtenida= mejorCombinacion.stream().collect(Collectors.summarizingInt(i -> i.getGanancia() + i.getGanancia()));
-        System.out.println("Ganancia del mayor conjunto es : " + gananciaOBtenida.getSum());
+        System.out.println("Ganancia del mayor conjunto es : " + getMejorValor());
         for (Carta carta : mejorCombinacion) {
-            carta.print(carta.infoCartaExpress());
+            carta.print(carta.infoCarta());
         }
 
     }

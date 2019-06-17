@@ -28,9 +28,7 @@ public class Combinador {
 
     public void conseguirResultado() {
         listaAMapa(sistema.getTodasLasCartas());
-        getMapaDePalos().forEach((key, val) -> recursiveCombinations(val, new ArrayList<>(), 0));
-//        recortarMapa();
-//        elegirMejorPalo();
+        mapaDePalos.forEach((key, val) -> recursiveCombinations(val, new ArrayList<>(), 0));
     }
 
     private void listaAMapa(List<Carta> todasLasCartas) {
@@ -46,7 +44,7 @@ public class Combinador {
         setMapaDePalos(mapaDePalos);
     }
 
-    private void recursiveCombinations(List<Carta> cartas, List<models.Carta> arrayHelper, int index) {
+    private void recursiveCombinations(List<Carta> cartas, List<Carta> arrayHelper, int index) {
 
         if(index == cartas.size()) {
             if(arrayHelper.size() <= sistema.getCombinatoriaMaxima()) {
@@ -67,44 +65,5 @@ public class Combinador {
             recursiveCombinations(cartas, arrayHelper, index+1);
         }
     }
-
-    private Map<Palo, List<Carta>> getMapaDePalos() {
-        return mapaDePalos;
-    }
-
-/*
-    int k = 3;
-    int bestValor = 0;
-    List<models.Carta> bestCombination = new ArrayList<>();
-
-    public int getK() {
-        return k;
-    }
-    public void setBestValor(int bestValor) {
-        this.bestValor = bestValor;
-    }
-
-    public void setBestCombination(List<models.Carta> bestCombination) {
-        this.bestCombination = bestCombination;
-    }
-
-    public void recursiveCombinationsStart(ArrayList<models.Carta> cartas) {
-        List<models.Carta> arrayHelper = new ArrayList<>();
-        recursiveCombinations(cartas, arrayHelper, 0);
-    }
-
-    public void display() {
-        ArrayList<models.Carta> cartas = new ArrayList<>();
-        cartas.add(new models.Carta(models.Carta.palos.Oro, 2, 4));
-        cartas.add(new models.Carta(models.Carta.palos.Oro, 8, -3));
-        cartas.add(new models.Carta(models.Carta.palos.Oro, 4, 2));
-        cartas.add(new models.Carta(models.Carta.palos.Oro, 3, -5));
-
-        recursiveCombinationsStart(cartas);
-        System.out.println(this.bestValor);
-        System.out.println(this.bestCombination);
-    }
-    */
-
 
 }

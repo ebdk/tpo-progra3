@@ -19,16 +19,8 @@ public enum Palo {
         return inicial;
     }
 
-    public void setInicial(String inicial) {
-        this.inicial = inicial;
-    }
-
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getValor() {
@@ -51,18 +43,14 @@ public enum Palo {
     }
 
     public void printPalo() {
-
         System.out.println(this.getNombre() + " es de valor: " + this.getValor());
-
     }
 
     public static void printPalos() {
-
         Palo[] palos = Palo.values();
         for (Palo palo : palos) {
             palo.printPalo();
         }
-
     }
 
 }
