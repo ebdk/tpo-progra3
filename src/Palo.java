@@ -50,7 +50,7 @@ public enum Palo {
 
     public void printPalo() {
 
-        System.out.println(this.getNombre() + " tiene valor: " + this.getValor());
+        System.out.println(this.getNombre() + " es de valor: " + this.getValor());
 
     }
 

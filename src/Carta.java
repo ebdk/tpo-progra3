@@ -19,7 +19,7 @@ public class Carta {
 
     public void printCarta() {
 
-        System.out.println(this.valor + " de " + this.palo.getNombre() + " con beneficio: " + this.beneficio + " da ganancia: " + getGanancia());
+        System.out.println(this.valor + " de " + this.palo.getNombre() + " (Beneficio: " + this.beneficio + ") su Ganancia es: " + getGanancia());
 
     }
 
