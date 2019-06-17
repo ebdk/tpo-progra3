@@ -17,6 +17,10 @@ public class Carta {
         return palo.getValor() + beneficio + valor;
     }
 
+    public Palo getPalo() {
+        return palo;
+    }
+
     public String infoCarta() {
         return infoCartaExpress() + " (Beneficio: " + this.beneficio + ") su Ganancia es: " + getGanancia();
     }

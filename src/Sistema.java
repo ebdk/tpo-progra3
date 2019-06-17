@@ -11,11 +11,11 @@ public class Sistema {
 
     private List<Carta> todasLasCartas;
     private List<Carta> mejorCombinacion;
-    private int combinatoria;
+    private int combinatoriaMaxima;
 
 
     public Sistema(Parseador parseador, Combinador combinador) {
-        combinatoria = 0;
+        combinatoriaMaxima = 0;
         todasLasCartas = new ArrayList<>();
         mejorCombinacion = new ArrayList<>();
         setParseador(parseador);
@@ -25,7 +25,7 @@ public class Sistema {
     public void ejecutar() throws IOException {
         parseador.procesarArchivo();
         printCartas();
-        //combinador.conseguirResultado();
+        combinador.conseguirResultado();
         mostrarMejorCombinacion();
     }
 
@@ -37,12 +37,12 @@ public class Sistema {
         todasLasCartas.add(carta);
     }
 
-    private int getCombinatoria() {
-        return combinatoria;
+    private int getCombinatoriaMaxima() {
+        return combinatoriaMaxima;
     }
 
-    public void setCombinatoria(int combinatoria) {
-        this.combinatoria = combinatoria;
+    public void setCombinatoriaMaxima(int combinatoriaMaxima) {
+        this.combinatoriaMaxima = combinatoriaMaxima;
     }
 
     private Parseador getParseador() {
@@ -60,11 +60,12 @@ public class Sistema {
 
     private void setCombinador(Combinador combinador) {
         this.combinador = combinador;
+        combinador.setSistema(this);
     }
 
     public void printCartas() {
         Palo.printPalos();
-        System.out.println("Valor de K es: " + this.getCombinatoria());
+        System.out.println("Valor de K es: " + this.getCombinatoriaMaxima());
         for (Carta carta : todasLasCartas) {
             carta.print(carta.infoCarta());
         }

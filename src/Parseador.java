@@ -28,7 +28,7 @@ public class Parseador {
     private void analizarPrimerLinea(String separadoPorEspacio) {
 
         String[] separadoPorPuntoComa = separadoPorEspacio.split(";");
-        sistema.setCombinatoria(Integer.parseInt(separadoPorPuntoComa[1])); //setea el K
+        sistema.setCombinatoriaMaxima(Integer.parseInt(separadoPorPuntoComa[1])); //setea el K
 
         String[] separadoPorMenos = separadoPorPuntoComa[0].split("-"); //separa cada palo
 

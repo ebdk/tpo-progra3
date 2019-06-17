@@ -1,7 +1,45 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Combinador {
+
+    private Sistema sistema;
+
+    private Map< Palo, List<Carta> > mapaDePalos;
+
+    public Combinador() {
+    }
+
+    public void setMapaDePalos(Map<Palo, List<Carta>> mapaDePalos) {
+        this.mapaDePalos = mapaDePalos;
+    }
+
+    public void setSistema(Sistema sistema) {
+        this.sistema = sistema;
+    }
+
+    public void conseguirResultado() {
+        listaAMapa(sistema.getTodasLasCartas());
+        //recortarMapa();
+        //elegirMejorPalo();
+    }
+
+    private void listaAMapa(List<Carta> todasLasCartas) {
+        Map< Palo, List<Carta> > mapaDePalos = new HashMap<>();
+        Palo[] palos = Palo.values();
+        for(Palo palo : palos) {
+            List<Carta> cartaDelPalo = todasLasCartas
+                    .stream()
+                    .filter(carta -> carta.getPalo().equals(palo))
+                    .collect(Collectors.toList());
+            mapaDePalos.put(palo, cartaDelPalo);
+        }
+        setMapaDePalos(mapaDePalos);
+    }
+
 /*
     int k = 3;
     int bestValor = 0;
@@ -56,8 +94,7 @@ public class Combinador {
         System.out.println(this.bestValor);
         System.out.println(this.bestCombination);
     }
+    */
 
 
-
-*/
 }
