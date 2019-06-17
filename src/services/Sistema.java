@@ -16,8 +16,26 @@ public class Sistema {
 
     private List<Carta> todasLasCartas;
     private List<Carta> mejorCombinacion;
+
     private int combinatoriaMaxima;
 
+    public List<Carta> getMejorCombinacion() {
+        return mejorCombinacion;
+    }
+
+    public void setMejorCombinacion(List<Carta> mejorCombinacion) {
+        this.mejorCombinacion = mejorCombinacion;
+    }
+
+    public int getMejorValor() {
+        return mejorValor;
+    }
+
+    public void setMejorValor(int mejorValor) {
+        this.mejorValor = mejorValor;
+    }
+
+    private int mejorValor;
 
     public Sistema(Parseador parseador, Combinador combinador) {
         combinatoriaMaxima = 0;
@@ -25,13 +43,14 @@ public class Sistema {
         mejorCombinacion = new ArrayList<>();
         setParseador(parseador);
         setCombinador(combinador);
+        mejorValor = 0;
     }
 
     public void ejecutar() throws IOException {
         parseador.procesarArchivo();
-        printCartas();
+        // printCartas();
         combinador.conseguirResultado();
-        mostrarMejorCombinacion();
+        // mostrarMejorCombinacion();
     }
 
     public List<Carta> getTodasLasCartas() {
@@ -42,7 +61,7 @@ public class Sistema {
         todasLasCartas.add(carta);
     }
 
-    private int getCombinatoriaMaxima() {
+    public int getCombinatoriaMaxima() {
         return combinatoriaMaxima;
     }
 

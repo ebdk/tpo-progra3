@@ -16,6 +16,9 @@ public class Main {
         Sistema sistema = new Sistema(parseador, combinador);
 
         sistema.ejecutar();
+
+        System.out.println(sistema.getMejorValor());
+        System.out.println(sistema.getMejorCombinacion());
     }
 
 }
