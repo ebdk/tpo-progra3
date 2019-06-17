@@ -27,8 +27,9 @@ public class Combinador {
 
     public void conseguirResultado() {
         listaAMapa(sistema.getTodasLasCartas());
-        //recortarMapa();
-        //elegirMejorPalo();
+        combinar();
+        recortarMapa();
+        elegirMejorPalo();
     }
 
     private void listaAMapa(List<Carta> todasLasCartas) {
