@@ -3,6 +3,7 @@ package services;
 import models.Carta;
 import models.Palo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,9 +28,9 @@ public class Combinador {
 
     public void conseguirResultado() {
         listaAMapa(sistema.getTodasLasCartas());
-        combinar();
-        recortarMapa();
-        elegirMejorPalo();
+        getMapaDePalos().forEach((key, val) -> recursiveCombinations(val, new ArrayList<>(), 0));
+//        recortarMapa();
+//        elegirMejorPalo();
     }
 
     private void listaAMapa(List<Carta> todasLasCartas) {
@@ -43,6 +44,32 @@ public class Combinador {
             mapaDePalos.put(palo, cartaDelPalo);
         }
         setMapaDePalos(mapaDePalos);
+    }
+
+    private void recursiveCombinations(List<Carta> cartas, List<models.Carta> arrayHelper, int index) {
+
+        if(index == cartas.size()) {
+            if(arrayHelper.size() <= sistema.getCombinatoriaMaxima()) {
+                int valorTotalDeLaCombinacion =
+                        arrayHelper
+                                .stream()
+                                .map(x -> x.getGanancia())
+                                .reduce(0, (acc, val) -> acc + val);
+                if(valorTotalDeLaCombinacion > sistema.getMejorValor()) {
+                    sistema.setMejorValor(valorTotalDeLaCombinacion);
+                    sistema.setMejorCombinacion(new ArrayList<>(arrayHelper));
+                }
+            }
+        } else {
+            arrayHelper.add(cartas.get(index));
+            recursiveCombinations(cartas, arrayHelper, index+1);
+            arrayHelper.remove(cartas.get(index));
+            recursiveCombinations(cartas, arrayHelper, index+1);
+        }
+    }
+
+    private Map<Palo, List<Carta>> getMapaDePalos() {
+        return mapaDePalos;
     }
 
 /*
@@ -59,28 +86,6 @@ public class Combinador {
 
     public void setBestCombination(List<models.Carta> bestCombination) {
         this.bestCombination = bestCombination;
-    }
-
-    private void recursiveCombinations(ArrayList<models.Carta> cartas, List<models.Carta> arrayHelper, int index) {
-
-        if(index == cartas.size()) {
-            if(arrayHelper.size() <= getK()) {
-                int valorTotalDeLaCombinacion =
-                        arrayHelper
-                                .stream()
-                                .map(x -> x.getValor())
-                                .reduce(0, (acc, val) -> acc + val);
-                if(valorTotalDeLaCombinacion > this.bestValor) {
-                    this.setBestValor(valorTotalDeLaCombinacion);
-                    this.setBestCombination(new ArrayList<>(arrayHelper));
-                }
-            }
-        } else {
-            arrayHelper.add(cartas.get(index));
-            recursiveCombinations(cartas, arrayHelper, index+1);
-            arrayHelper.remove(cartas.get(index));
-            recursiveCombinations(cartas, arrayHelper, index+1);
-        }
     }
 
     public void recursiveCombinationsStart(ArrayList<models.Carta> cartas) {

@@ -35,4 +35,7 @@ public class Carta {
         System.out.println(string);
     }
 
+    public String toString() {
+        return "{ " + infoCartaExpress() + ", " + getGanancia() + " }";
+    }
 }
