@@ -48,8 +48,7 @@ public class Sistema {
 
     public void ejecutar() throws IOException {
         parseador.procesarArchivo();
-        printCartas();
-        System.out.println("----------------------------------");
+        //printCartas();
         combinador.conseguirResultado();
         mostrarMejorCombinacion();
     }
@@ -94,6 +93,7 @@ public class Sistema {
         for (Carta carta : todasLasCartas) {
             carta.print(carta.infoCartaExpress());
         }
+        System.out.println("----------------------------------");
     }
 
     public void mostrarMejorCombinacion() {
