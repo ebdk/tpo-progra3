@@ -17,10 +17,16 @@ public class Carta {
         return palo.getValor() + beneficio + valor;
     }
 
-    public void printCarta() {
+    public String infoCarta() {
+        return infoCartaExpress() + " (Beneficio: " + this.beneficio + ") su Ganancia es: " + getGanancia();
+    }
 
-        System.out.println(this.valor + " de " + this.palo.getNombre() + " (Beneficio: " + this.beneficio + ") su Ganancia es: " + getGanancia());
+    public String infoCartaExpress() {
+        return this.valor + " de " + this.palo.getNombre();
+    }
 
+    public void print(String string) {
+        System.out.println(string);
     }
 
 }

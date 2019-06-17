@@ -1,18 +1,23 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Sistema {
-
-    private List<Carta> todasLasCartas;
-    private int combinatoria;
 
     private Parseador parseador;
     private Combinador combinador;
 
+    private List<Carta> todasLasCartas;
+    private List<Carta> mejorCombinacion;
+    private int combinatoria;
+
+
     public Sistema(Parseador parseador, Combinador combinador) {
         combinatoria = 0;
         todasLasCartas = new ArrayList<>();
+        mejorCombinacion = new ArrayList<>();
         setParseador(parseador);
         setCombinador(combinador);
     }
@@ -20,8 +25,8 @@ public class Sistema {
     public void ejecutar() throws IOException {
         parseador.procesarArchivo();
         printCartas();
-        Palo.printPalos();
         //combinador.conseguirResultado();
+        mostrarMejorCombinacion();
     }
 
     public List<Carta> getTodasLasCartas() {
@@ -58,9 +63,20 @@ public class Sistema {
     }
 
     public void printCartas() {
+        Palo.printPalos();
+        System.out.println("Valor de K es: " + this.getCombinatoria());
         for (Carta carta : todasLasCartas) {
-            carta.printCarta();
+            carta.print(carta.infoCarta());
         }
+    }
+
+    public void mostrarMejorCombinacion() {
+        IntSummaryStatistics gananciaOBtenida= mejorCombinacion.stream().collect(Collectors.summarizingInt(i -> i.getGanancia() + i.getGanancia()));
+        System.out.println("Ganancia del mayor conjunto es : " + gananciaOBtenida.getSum());
+        for (Carta carta : mejorCombinacion) {
+            carta.print(carta.infoCartaExpress());
+        }
+
     }
 
 }
