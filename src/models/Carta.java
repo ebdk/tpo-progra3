@@ -21,11 +21,11 @@ public class Carta {
     }
 
     public String infoCarta() {
-        return infoCartaExpress() + ") cuya Ganancia es: " + getGanancia();
+        return infoCartaExpress() + " cuya Ganancia es: " + getGanancia();
     }
 
     public String infoCartaExpress() {
-        return this.posicion + " de " + this.palo.getNombre() + " (Beneficio: " + this.beneficio;
+        return this.posicion + " de " + this.palo.getNombre() + " (Beneficio: " + this.beneficio + ")";
     }
 
     public void print(String string) {
