@@ -21,7 +21,7 @@ public class Parseador {
     public void procesarArchivo() throws IOException {
         String archivoEntero = new String(Files.readAllBytes(Paths.get("cartas.txt")));
 
-        System.out.println(archivoEntero);
+        //System.out.println(archivoEntero);
 
         String[] separadoPorEspacios = archivoEntero.split("\\s+"); //separa entre linea 1 y 2
 
