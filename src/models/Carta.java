@@ -1,20 +1,22 @@
+package models;
+
 public class Carta {
 
     private Palo palo;
     private int beneficio;
-    private int valor;
+    private int posicion;
 
-    public Carta(Palo palo, int valor, int beneficio) {
+    public Carta(Palo palo, int posicion, int beneficio) {
         this.palo = palo;
         this.beneficio = beneficio;
-        this.valor = valor;
+        this.posicion = posicion;
     }
 
     public Carta() {
     }
 
     public int getGanancia() {
-        return palo.getValor() + beneficio + valor;
+        return palo.getValor() + beneficio + posicion;
     }
 
     public Palo getPalo() {
@@ -26,7 +28,7 @@ public class Carta {
     }
 
     public String infoCartaExpress() {
-        return this.valor + " de " + this.palo.getNombre();
+        return this.posicion + " de " + this.palo.getNombre();
     }
 
     public void print(String string) {

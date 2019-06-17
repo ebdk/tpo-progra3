@@ -1,3 +1,8 @@
+package services;
+
+import models.Carta;
+import models.Palo;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.IntSummaryStatistics;

@@ -1,3 +1,5 @@
+package models;
+
 public enum Palo {
     BASTO ("B", "BASTO", 0),
     ESPADA ("E", "ESPADA", 0),

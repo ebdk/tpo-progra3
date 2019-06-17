@@ -1,4 +1,8 @@
-import java.util.ArrayList;
+package services;
+
+import models.Carta;
+import models.Palo;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +12,7 @@ public class Combinador {
 
     private Sistema sistema;
 
-    private Map< Palo, List<Carta> > mapaDePalos;
+    private Map<Palo, List<Carta> > mapaDePalos;
 
     public Combinador() {
     }
@@ -43,7 +47,7 @@ public class Combinador {
 /*
     int k = 3;
     int bestValor = 0;
-    List<Carta> bestCombination = new ArrayList<>();
+    List<models.Carta> bestCombination = new ArrayList<>();
 
     public int getK() {
         return k;
@@ -52,11 +56,11 @@ public class Combinador {
         this.bestValor = bestValor;
     }
 
-    public void setBestCombination(List<Carta> bestCombination) {
+    public void setBestCombination(List<models.Carta> bestCombination) {
         this.bestCombination = bestCombination;
     }
 
-    private void recursiveCombinations(ArrayList<Carta> cartas, List<Carta> arrayHelper, int index) {
+    private void recursiveCombinations(ArrayList<models.Carta> cartas, List<models.Carta> arrayHelper, int index) {
 
         if(index == cartas.size()) {
             if(arrayHelper.size() <= getK()) {
@@ -78,17 +82,17 @@ public class Combinador {
         }
     }
 
-    public void recursiveCombinationsStart(ArrayList<Carta> cartas) {
-        List<Carta> arrayHelper = new ArrayList<>();
+    public void recursiveCombinationsStart(ArrayList<models.Carta> cartas) {
+        List<models.Carta> arrayHelper = new ArrayList<>();
         recursiveCombinations(cartas, arrayHelper, 0);
     }
 
     public void display() {
-        ArrayList<Carta> cartas = new ArrayList<>();
-        cartas.add(new Carta(Carta.palos.Oro, 2, 4));
-        cartas.add(new Carta(Carta.palos.Oro, 8, -3));
-        cartas.add(new Carta(Carta.palos.Oro, 4, 2));
-        cartas.add(new Carta(Carta.palos.Oro, 3, -5));
+        ArrayList<models.Carta> cartas = new ArrayList<>();
+        cartas.add(new models.Carta(models.Carta.palos.Oro, 2, 4));
+        cartas.add(new models.Carta(models.Carta.palos.Oro, 8, -3));
+        cartas.add(new models.Carta(models.Carta.palos.Oro, 4, 2));
+        cartas.add(new models.Carta(models.Carta.palos.Oro, 3, -5));
 
         recursiveCombinationsStart(cartas);
         System.out.println(this.bestValor);
